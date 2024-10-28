@@ -197,8 +197,11 @@ tr:nth-child(even) {
     border-radius: 8px;
     padding: 10px;
     align-items: center; /* Center content horizontally */
+
     text-align: left; /* Ensures text inside the card aligns left */
+    max-width: 200px; /* Keeps athlete cards uniform in size */
 }
+
 
 .athlete img {
     width: 60px;
@@ -207,10 +210,15 @@ tr:nth-child(even) {
     object-fit: cover;
     border: 2px solid var(--primary-color);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: block; /* Ensures the image takes up the full width of its container */
-    margin: 0 auto; /* Centers the image horizontally */
-}
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    text-align: center; /* Centers text inside the card */
+    max-width: 200px; /* Keeps athlete cards uniform in size */
+    margin: 0 auto; /* Centers the card itself */
 
+
+
+}
 
 .athlete-details {
     flex-grow: 1;
