@@ -1,0 +1,360 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Prefers-Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important; /* Disables all animations */
+        transition: none !important; /* Disables all transitions */
+    }
+
+    .gallery-scroll img:hover {
+        transform: none; /* Disables zoom effect on hover */
+    }
+
+    .athlete:hover {
+        transform: none; /* Disables hover lift effect */
+    }
+
+    .athlete-name:focus + .athlete-details,
+    .athlete-name:active + .athlete-details {
+        max-height: 200px;
+        background-color: #f0f0f0; /* Keeps background change but no transition */
+    }
+}
+
+/* Paragraph Styles */
+p {
+    margin: 15px 0; /* Adds space between paragraphs */
+    line-height: 1.8; /* Increases line spacing for better readability */
+}
+
+p .athlete {
+    display: inline; /* Keeps the athlete names inline with the text */
+    background: var(--secondary-color);
+    padding: 2px 4px;
+    border-radius: 4px;
+    margin: 0 2px; /* Adds a small space around the names */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow for emphasis */
+    text-decoration: none; /* Ensures there’s no underline */
+}
+
+
+/* Light Mode: Default */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --primary-color: #84a6dc;
+    --secondary-color: #f4f4f4;
+    --border-color: #dddddd;
+}
+
+/* Dark Mode */
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #f0f0f0;
+    --primary-color: #234586;
+    --secondary-color: #333333;
+    --border-color: #444444;
+}
+
+/* Change athlete name color in dark mode */
+[data-theme="dark"] .athlete-name, h1 a {
+    color: #728fe7; 
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 10px 0;
+    color: var(--text-color);
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+p {
+    margin: 10px 0;
+    color: var(--text-color);
+}
+
+/* Navigation */
+nav {
+    background: var(--primary-color);
+    color: var(--text-color);
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Adjust this value for spacing between items */
+    align-items: center;
+}
+
+nav li {
+    margin: 0;
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 12px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 5px;
+    font-weight: 500; /* Makes the text slightly bolder */
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav a {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+
+/* Main Content */
+main {
+    padding: 20px;
+}
+
+/* Team Results */
+#team-results h2 {
+    margin-top: 30px; /* Adjust the value as needed for desired spacing */
+    text-align: center; /* Ensure the heading remains centered */
+}
+
+table {
+    width: 80%; /* Adjust this value as needed */
+    margin: 0 auto; /* Center the table horizontally */
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: var(--secondary-color);
+}
+
+th, td {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+}
+
+th {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+tr:nth-child(even) {
+    background-color: var(--secondary-color);
+}
+
+/* Individual Results */
+#individual-results {
+    max-width: 800px; /* Adjust this width as needed */
+    margin: 0 auto; /* Centers the entire section horizontally */
+    padding: 20px;
+    text-align: center;
+}
+
+.individual-results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Centers the athlete cards within the section */
+    align-items: center;
+    margin-top: 20px;
+}
+
+
+.athlete {
+    display: inline-block;
+    background: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px;
+    align-items: center; /* Center content horizontally */
+
+    text-align: left; /* Ensures text inside the card aligns left */
+    max-width: 200px; /* Keeps athlete cards uniform in size */
+}
+
+
+.athlete img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    text-align: center; /* Centers text inside the card */
+    max-width: 200px; /* Keeps athlete cards uniform in size */
+    margin: 0 auto; /* Centers the card itself */
+
+
+
+}
+
+.athlete-details {
+    flex-grow: 1;
+    font-size: clamp(0.875rem, 1.2vw, 1rem);
+    max-height: none;
+    overflow: visible;
+    transition: max-height 0.4s ease-in-out, background-color 0.3s;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    text-align: center; /* Centers text inside the card */
+    margin: 0 auto; /* Centers the card itself */
+}
+
+/* Make Place, Time, and Grade bold */
+.athlete-details dt {
+    font-weight: bold;
+}
+
+.athlete-name {
+    font-weight: bold;
+    color: #28508F;
+    cursor: pointer;
+    display: block; /* Ensures the name takes the full width of the container */
+    text-align: center; /* Centers the text within the block */
+    margin: 10px 0; /* Adds some spacing around the name */
+}
+
+
+.athlete-name:focus + .athlete-details,
+.athlete-name:active + .athlete-details {
+    max-height: 200px;
+    background-color: #f0f0f0;
+}
+
+.athlete:hover {
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Responsive Design */
+@media (min-width: 600px) {
+    .individual-results {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .athlete {
+        width: calc(50% - 10px);
+    }
+}
+
+@media (min-width: 768px) {
+    .athlete {
+        width: calc(33.33% - 10px);
+    }
+}
+
+/* Footer */
+footer {
+    background: var(--primary-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+}
+
+footer a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Button Styling */
+#toggle-theme {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#toggle-theme:hover {
+    background-color: #78a2bb;
+}
+
+#toggle-theme:active {
+    transform: scale(0.95);
+}
+
+/* Accessibility Improvements */
+a:focus,
+button:focus {
+    outline: 2px dashed var(--primary-color);
+    outline-offset: 4px;
+}
+
+/* Scrollable Gallery */
+#gallery {
+    padding: 20px;
+    background-color: var(--secondary-color);
+    text-align: center;
+}
+
+.gallery-scroll {
+    display: flex;
+    gap: 10px; /* Space between images */
+    overflow-x: auto; /* Enables horizontal scrolling */
+    scroll-behavior: smooth; /* Smooth scrolling when using buttons or dragging */
+    padding: 10px;
+}
+
+.gallery-scroll img {
+    height: 100px; /* Adjust height as needed */
+    width: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.gallery-scroll img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.gallery-scroll::-webkit-scrollbar {
+    height: 8px; /* Adjust scrollbar height */
+}
+
+.gallery-scroll::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 4px;
+}
