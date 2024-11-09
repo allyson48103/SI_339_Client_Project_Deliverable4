@@ -8,6 +8,12 @@ body {
     line-height: 1.6;
 }
 
+.summary {
+    max-width: 1000px; /* Limit the width of the summary */
+    margin: auto; /* Center horizontally */
+    padding: 15px; /* Add inner spacing */
+}
+
 /* Prefers-Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
     * {
@@ -53,26 +59,37 @@ p .athlete {
     --text-color: #333333;
     --primary-color: #84a6dc;
     --secondary-color: #f4f4f4;
+    --third-color: #28508F;
     --border-color: #dddddd;
+    --table-color: #f6f6f6;
+    --table-fill: #ffffff;
 }
 
-/* Dark Mode */
-[data-theme="dark"] {
-    --bg-color: #1a1a1a;
-    --text-color: #f0f0f0;
-    --primary-color: #234586;
-    --secondary-color: #333333;
-    --border-color: #444444;
+/* Dark Mode Using Media Query */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #1a1a1a;
+        --text-color: #f0f0f0;
+        --primary-color: #234586;
+        --secondary-color: #333333;
+        --third-color: #b8d7ff;
+        --border-color: #444444;
+        --table-color: #292626;
+        --table-fill: #333333;
+    }
 }
 
 /* Change athlete name color in dark mode */
 [data-theme="dark"] .athlete-name, h1 a {
-    color: #728fe7; 
+    color: #728fe7 !important;
 }
 
-h1, h2, h3, h4, h5 {
-    margin: 10px 0;
-    color: var(--text-color);
+h1{
+    margin-top: 40px;
+}
+
+h2{
+    margin-bottom: 10px;
 }
 
 h1, h2 {
@@ -136,26 +153,60 @@ nav a:hover {
     }
 }
 
-
-
 /* Main Content */
 main {
-    padding: 20px;
+    padding: 10px;
 }
 
 /* Team Results */
 #team-results h2 {
-    margin-top: 30px; /* Adjust the value as needed for desired spacing */
+    margin-top: 50px; /* Adjust the value as needed for desired spacing */
     text-align: center; /* Ensure the heading remains centered */
 }
 
+/* Scrollable Table */
 table {
     width: 80%; /* Adjust this value as needed */
     margin: 0 auto; /* Center the table horizontally */
     border-collapse: collapse;
     margin-bottom: 20px;
-    background-color: var(--secondary-color);
+    background-color: var(--table-fill);
 }
+
+/* Scrollable Table */
+.scrollable-table {
+    max-height: 500px; /* Set the maximum height for the table container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin: 0 auto; /* Center the container */
+    background-color: var(--table-color);
+    width: 80%;
+    margin-bottom: 30px;
+}
+
+/* Default Scrollbar */
+.scrollable-table::-webkit-scrollbar {
+    width: 8px; /* Scrollbar width */
+}
+
+.scrollable-table::-webkit-scrollbar-thumb {
+    background-color: var(--border-color); /* Default scrollbar thumb color */
+    border-radius: 4px; /* Rounded edges */
+}
+
+.scrollable-table::-webkit-scrollbar-track {
+    background-color: var(--secondary-color); /* Default scrollbar track color */
+}
+
+/* Dark Mode Scrollbar */
+[data-theme="dark"] .scrollable-table::-webkit-scrollbar-thumb {
+    background-color: lightgray; /* Light gray thumb for better visibility in dark mode */
+}
+
+[data-theme="dark"] .scrollable-table::-webkit-scrollbar-track {
+    background-color: #2b2b2b; /* Dark gray track to contrast with thumb */
+}
+
+
 
 th, td {
     text-align: center;
@@ -239,13 +290,12 @@ tr:nth-child(even) {
 
 .athlete-name {
     font-weight: bold;
-    color: #28508F;
+    color: var(--third-color);
     cursor: pointer;
     display: block; /* Ensures the name takes the full width of the container */
     text-align: center; /* Centers the text within the block */
     margin: 10px 0; /* Adds some spacing around the name */
 }
-
 
 .athlete-name:focus + .athlete-details,
 .athlete-name:active + .athlete-details {
@@ -296,26 +346,6 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* Button Styling */
-#toggle-theme {
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-    padding: 10px 20px;
-    margin: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-#toggle-theme:hover {
-    background-color: #78a2bb;
-}
-
-#toggle-theme:active {
-    transform: scale(0.95);
-}
-
 /* Accessibility Improvements */
 a:focus,
 button:focus {
@@ -339,7 +369,7 @@ button:focus {
 }
 
 .gallery-scroll img {
-    height: 100px; /* Adjust height as needed */
+    height: 180px; /* Adjust height as needed */
     width: auto;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -347,7 +377,7 @@ button:focus {
 }
 
 .gallery-scroll img:hover {
-    transform: scale(1.05); /* Slight zoom effect on hover */
+    transform: scale(1.07); /* Slight zoom effect on hover */
 }
 
 .gallery-scroll::-webkit-scrollbar {
