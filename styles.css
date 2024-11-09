@@ -38,18 +38,23 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 30px; /* Increase gap for better spacing */
     margin-top: 20px;
 }
 
 /* Meet Option Styling */
 .meet-option {
     text-decoration: none;
-    padding: 15px 30px;
+    padding: 20px 40px; 
+    font-size: 1.04rem;
     background-color: var(--primary-color);
     color: var(--text-color);
     border-radius: 5px;
     transition: background-color 0.3s;
+    width: 80%; /* Ensure all buttons have the same width */
+    max-width: 600px; /* Optional: Add a maximum width for better responsiveness */
+    text-align: center; /* Center-align text inside the button */
+    margin: 0 auto; /* Center the button horizontally */
 }
 
 .meet-option:hover {
