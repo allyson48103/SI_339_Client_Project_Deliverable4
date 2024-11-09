@@ -1,6 +1,6 @@
 // Function to replace broken images with a default image
 function handleImageError() {
-    const defaultImagePath = '../images/default_image.jpg';
+    const defaultImagePath = 'images/default_image.jpg';
 
     // Select all images on the page
     const images = document.querySelectorAll('img');
